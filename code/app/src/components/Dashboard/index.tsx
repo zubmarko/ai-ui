@@ -12,10 +12,10 @@ const schema = Yup.object().shape({
   frameworks: Yup.array().of(
     Yup.object().shape({
       name: Yup.string().min(2, 'Name must be at least 2 characters long').required('Name is required'),
-      type: Yup.string(),
-      githubStars: Yup.number(),
-      pros: Yup.string(),
-      cons: Yup.string(),
+      type: Yup.string().min(2, 'Type must be at least 2 characters long').required('Pros is required'),
+      githubStars: Yup.number().transform(value => (isNaN(value) ? undefined : value)).required('GitHub Stars are required'),
+      pros: Yup.string().min(2, 'Pros must be at least 2 characters long').required('Pros is required'),
+      cons: Yup.string().min(2, 'Cons must be at least 2 characters long').required('Cons is required'),
     })
   )
 });
@@ -52,11 +52,10 @@ const Dashboard = () => {
   }, [reset]);
 
   const onSubmit = data => {
-    // fields.push()
+    // Next code was fixed by human
     reset({
       frameworks: data.frameworks
     });
-    // replace(data.frameworks);
     setEditMode(false); // Optionally exit edit mode on save
   };
 
@@ -80,17 +79,7 @@ const Dashboard = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
-
-    // const filteredFrameworks = fields?.filter(framework =>
-    //   framework.name.toLowerCase().includes(searchTerm)
-    // );
-
-  
-
-    // replace(filteredFrameworks);
-
   };
-
 
   if (loading) {
     return <div className="flex justify-center items-center h-screen">
@@ -138,22 +127,22 @@ const Dashboard = () => {
           </div>
 
           <div>
-            <button data-testid="toggle-edit" type="button" onClick={toggleEditMode} className="mr-4 p-2 bg-blue-400 text-white rounded">
+            <button data-testid="toggle-edit" type="button" onClick={toggleEditMode} className="text-xs mr-4 p-2 bg-blue-400 text-white rounded">
               {editMode ? 'Exit Edit Mode' : 'Enter Edit Mode'}
             </button>
             {editMode && (
               <>
-                <button data-testid="add-framework-button" type="button" onClick={() => append({ id: uuidv4(), name: '', type: 'Library', githubStars: 0, pros: '', cons: '' })}
-                  className="mr-4 p-2 bg-green-500 text-white rounded">
+                <button data-testid="add-framework-button" type="button" onClick={() => append({ id: uuidv4(), name: '', type: 'Library', githubStars: 0, pros: '', cons: '', logoUrl: 'https://via.placeholder.com/100x80.png/ffffff?text=NewFramework' })}
+                  className="text-xs mr-4 p-2 bg-green-500 text-white rounded">
                   Add Framework
                 </button>
-                <button type="submit" className="p-2 bg-blue-500 text-white rounded ">Save Changes</button>
+                <button type="submit" className="text-xs p-2 bg-blue-500 text-white rounded ">Save Changes</button>
               </>
             )}
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {filteredFrameworks.map((field, index) => {
             // const fieldIndex = index;
             // Next code was fixed by human
@@ -161,31 +150,77 @@ const Dashboard = () => {
             const fieldIndex = fields.findIndex(formField => formField.id === field.id);
             return (
               <div key={field.id} className="p-4 shadow rounded-lg bg-white">
-                {editMode ? (
-                  <>
-                    <input key={field.id} {...register(`frameworks.${fieldIndex}.name`)} defaultValue={field.name} className="text-xl font-semibold outline-none" />
-                    {errors.frameworks && errors.frameworks[fieldIndex] && (
-                      <p className="text-red-500">{errors.frameworks[fieldIndex].name?.message}</p>
-                    )}
-  
-                    <Tooltip text="Remove">
-                      <button data-testid={`delete-framework-${index + 1}`} type="button" onClick={() => remove(fieldIndex)} className="ml-2 text-red-500"
-                      >
-                        🗑️
-                      </button>
-                    </Tooltip>
-                  </>
-                ) : (
-                  <>
-                    <h2 className="text-xl font-semibold">{field.name}</h2>
-                    <div>
-                      ({field.type})
-                    </div>
-                  </>
-                )}
-                <p><span className='font-bold'>GitHub Stars</span>: {field.githubStars}</p>
-                <p><span className='font-bold'>Pros</span>: {field.pros}</p>
-                <p><span className='font-bold'>Cons</span>: {field.cons}</p>
+                <div className='relative'>
+                  <div className="flex justify-center items-center h-20 mb-2"> {/* Adjust height as needed */}
+                    {field.logoUrl ? <img src={field.logoUrl} alt={`${field.name} logo`} className="max-w-[120px] max-h-[70px]" /> : null}
+                  </div>
+                  {editMode ? (
+                    <>
+                      <input
+                        data-testid={`frameworks.${fieldIndex}.name`}
+                        {...register(`frameworks.${fieldIndex}.name`)} defaultValue={field.name} className="text-xl font-semibold  w-full " />
+                      {errors.frameworks && errors.frameworks[fieldIndex] && (
+                        <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].name?.message}</p>
+                      )}
+                      <div>
+                        <input
+                          data-testid={`frameworks.${fieldIndex}.type`}
+                          {...register(`frameworks.${fieldIndex}.type`)} defaultValue={field.type} className=" w-full " />
+                        {errors.frameworks && errors.frameworks[fieldIndex] && (
+                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].type?.message}</p>
+                        )}
+
+                      </div>
+                      <div className="absolute top-2 right-2">
+                        <Tooltip text="Remove">
+                          <button data-testid={`delete-framework-${index + 1}`} type="button" onClick={() => remove(fieldIndex)} className="ml-2 text-red-500"
+                          >
+                            🗑️
+                          </button>
+                        </Tooltip>
+                      </div>
+
+                      <div className="text-sm text-gray-600 mb-2">GitHub Stars: <div className="font-medium">
+                        <input
+                          data-testid={`frameworks.${fieldIndex}.githubStars`}
+                          type="number" {...register(`frameworks.${fieldIndex}.githubStars`)} defaultValue={field.githubStars} className=" w-full " />
+                        {errors.frameworks && errors.frameworks[fieldIndex] && (
+                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].githubStars?.message}</p>
+                        )}
+
+                      </div>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">Pros: <div className="font-medium">
+                        <textarea {...register(`frameworks.${fieldIndex}.pros`)} defaultValue={field.pros} className="resize-none w-full " />
+                        {errors.frameworks && errors.frameworks[fieldIndex] && (
+                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].pros?.message}</p>
+                        )}
+                      </div>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">Cons: <div className="font-medium">
+                        <textarea {...register(`frameworks.${fieldIndex}.cons`)} defaultValue={field.cons} className="resize-none w-full " />
+                        {errors.frameworks && errors.frameworks[fieldIndex] && (
+                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].cons?.message}</p>
+                        )}
+                      </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="text-xl font-semibold">{field.name}</h2>
+                      <div>
+                        ({field.type})
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">GitHub Stars: <div className="font-medium">{field.githubStars}</div>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">Pros: <div className="font-medium">{field.pros}</div>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">Cons: <div className="font-medium">{field.cons}</div>
+                      </div>
+                    </>
+                  )}
+
+                </div>
               </div>
             )
           })}

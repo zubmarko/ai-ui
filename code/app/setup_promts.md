@@ -54,7 +54,7 @@ please also add TypeScript
 
 please also fix AuthContext component line with dispatch: React.Dispatch
 
-In `Logo.tsxt` className={`max-w-[${maxWidth}] mb-4`} not working
+In `Logo.tsxt` `className={`max-w-[${maxWidth}] mb-4`}` not working
 
 please center <Logo horizontally
 
@@ -93,6 +93,10 @@ and LogoutButton
 
 ### Setup project. Chat 5. TS LoginForm.jsx (ChatGPT failed couple times but finally added TS)
 
+[!TIP]
+ChatGPT doesn't provide correct urls for logos 
+It would be faster find images on the web
+
 [LoginForm.jsx]
 add suggestions to use TypeScript
 
@@ -105,3 +109,83 @@ analyze code and add TypeScript
 
 [LoginForm.jsx]
 analyze code and add TypeScript
+
+### Setup project. Chat 6. Edit Pros, Cons, Github Stars Dashboard/Styling
+[source.zip]
+add logoUrl as image of logo for each framework in fakeRequest.js 
+
+Please find logo links
+
+Please add logo for each framework
+
+Please adjust logo URLs to use direct link to image
+
+Add logoUrl in the Dashboard page below line `<div key={field.id} className="p-4 shadow rounded-lg bg-white">`
+
+Please use tailwind.css
+
+Add max height for logo 80px and center img also vertically
+
+Please logos for Preact, Ember, Angular and Backbone image not found
+
+Please add placeholder logo for new framework
+
+Please move Remove button to the right top corner with small space
+
+Please reduce font size for GitHub Stars, Pros and Cons
+
+Please check Dashboard/index.tsx
+in code should be field instead of framework
+and `<Tooltip text="Remove"> should wrap <button
+onClick={() => remove(framework.id)}`
+
+
+### Setup project. Chat 7. Edit Pros, Cons, Github Stars Dashboard/Styling
+
+[source.zip]
+Add edit for pros, cons, and GitHub Stars to existing code pros and cons as textarea GitHub Stars as input type number similar as it's for `<input key={field.id} {...register(frameworks.${fieldIndex}.name)} defaultValue={field.name} className="text-xl font-semibold outline-none" />`
+
+please provide full code and add new form controls inside `<span className="font-medium">`
+
+I would prefer to use this way:
+```
+<div key={field.id} className="p-4 shadow rounded-lg bg-white">
+  <div className='relative'>
+    <div className="flex justify-center items-center h-20 mb-2"> {/* Adjust height as needed */}
+      {field.logoUrl ? <img src={field.logoUrl} alt={`${field.name} logo`} className="max-w-[120px] max-h-[70px]" /> : null}
+    </div>
+    {editMode ? (
+      <>
+        <input {...register(`frameworks.${fieldIndex}.name`)} defaultValue={field.name} className="text-xl font-semibold outline-none" />
+        {errors.frameworks && errors.frameworks[fieldIndex] && (
+          <p className="text-red-500">{errors.frameworks[fieldIndex].name?.message}</p>
+        )}
+        <div className="absolute top-2 right-2">
+          <Tooltip text="Remove">
+            <button data-testid={`delete-framework-${index + 1}`} type="button" onClick={() => remove(fieldIndex)} className="ml-2 text-red-500"
+            >
+              🗑️
+            </button>
+          </Tooltip>
+        </div>
+        <p className="text-sm text-gray-600 mb-2">GitHub Stars: <div className="font-medium">
+          <input type="number" {...register(`frameworks.${fieldIndex}.githubStars`)} defaultValue={field.githubStars} className="outline-none" />
+        </div></p>
+```
+
+please add border light gray border bottom for each form controls like inputs and textareas
+
+analyze code and add only errors for each control as it's for frameworks.${fieldIndex}.name
+
+
+`frameworks[3].githubStars must be a number type, but the final value was: NaN (cast from the value "").` is there any way to fix it
+
+can we use typeError
+
+or maybe transform
+
+please make Button Exit Edit Mode smaller
+
+
+
+
