@@ -1,5 +1,5 @@
 
-### Setup project. Chat 1
+### Setup project. Chat 1. Basic Implementation 
 
 Create a login form with React Hook Form for email and password fields, with validation using Yup.
 
@@ -31,8 +31,7 @@ Add a button to cancel and discard changes made in the Dashboard component.
 
 Store user authentication data in localStorage and clear it on logout.
 
-### Setup project. Chat 2
-
+### Setup project. Chat 2. Header
 [source.zip]
 Add Sticky Header component display user email from AuthContext
 please use tailwind.css and add dropdown with LogoutButton inside dropdown
@@ -41,7 +40,7 @@ add logic to toggle dropdown
 
 move user email to the right side
 
-### Setup project. Chat 3
+### Setup project. Chat 3. Logo, Header fixs
 
 [source.zip]
 add logo component to LoginForm above tag form, path to logo assets/logo.png
@@ -80,7 +79,7 @@ and please use inline block
 add animation for tooltip on hover
 
 
-### Setup project. Chat 4
+### Setup project. Chat 4. TS Auth Guard
 
 [source.zip]
 add auth guard for dashboard page
@@ -92,7 +91,7 @@ Argument of type 'Context<AuthContextType>' is not assignable to parameter of ty
 add fixed header component with email from AuthContext
 and LogoutButton
 
-### Setup project. TS LoginForm.jsx (ChatGPT failed couple times but finally added TS)
+### Setup project. Chat 5. TS LoginForm.jsx (ChatGPT failed couple times but finally added TS)
 
 [LoginForm.jsx]
 add suggestions to use TypeScript
