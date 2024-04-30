@@ -1,3 +1,6 @@
+// Promt:
+// change code style to declarative style
+
 const usersArrayList = [
     undefined,
     false,

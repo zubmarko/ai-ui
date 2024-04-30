@@ -1,3 +1,6 @@
+// Promt:
+// optimize performance 
+
 const usersArrayList = [
     undefined, false, [null], ["Serj Potter"], null, [],
     "Batman", "Tommy", "", ["John Doe", "Elon Task"]

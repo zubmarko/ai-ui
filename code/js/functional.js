@@ -1,3 +1,6 @@
+// Promt:
+// change code to functional style
+
 const usersArrayList = [
     undefined,
     false,

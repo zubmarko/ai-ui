@@ -1,3 +1,6 @@
+// Promt:
+// change code to use reduce and TS
+
 type Visitor = string | null | boolean | string[] | undefined;
 
 const usersArrayList: Visitor[] = [

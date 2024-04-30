@@ -1,3 +1,6 @@
+// Promt:
+// use best practices of JS
+
 const usersArrayList = [
     undefined,
     false,
