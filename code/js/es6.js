@@ -1,4 +1,4 @@
-// Promt:
+// Prompt:
 // change code to use es6
 
 const usersArrayList = [

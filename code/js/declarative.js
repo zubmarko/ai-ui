@@ -1,4 +1,4 @@
-// Promt:
+// Prompt:
 // change code style to declarative style
 
 const usersArrayList = [

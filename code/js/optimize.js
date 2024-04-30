@@ -1,3 +1,4 @@
+// Prompt:
 const usersArrayList = [
     undefined,
     false,

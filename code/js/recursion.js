@@ -1,4 +1,4 @@
-// Promt:
+// Prompt:
 // optimize performance and I would prefer to use recursion in one function to flat array and filter empty values
 // and separate function to log names and say hello
 // Function to flatten an array and filter out empty values using recursion

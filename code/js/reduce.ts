@@ -1,4 +1,4 @@
-// Promt:
+// Prompt:
 // change code to use reduce and TS
 
 type Visitor = string | null | boolean | string[] | undefined;

@@ -1,4 +1,4 @@
-// Promt:
+// Prompt:
 // use best practices of JS
 
 const usersArrayList = [
