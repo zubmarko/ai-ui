@@ -5,7 +5,9 @@ import { AuthProvider } from './context/AuthContext';
 import Dashboard from './components/Dashboard';
 import LoginForm from './components/LoginForm';
 import AuthGuard from './components/AuthGuard';
+import ProfilePage from './components/ProfilePage';
 import StickyHeader from './components/StickyHeader';
+import NotFoundPage from './components/NotFoundPage';
 
 function App() {
   return (
@@ -13,6 +15,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/sign-in" element={<LoginForm />} />
+          <Route path="/profile" element={
+             <AuthGuard>
+             <>
+             <StickyHeader />
+             <ProfilePage />
+             </>
+           </AuthGuard>
+          } />
           <Route path="/dashboard" element={
             <AuthGuard>
               <>
@@ -22,6 +32,7 @@ function App() {
             </AuthGuard>
           } />
           {/* Additional routes here */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </AuthProvider>

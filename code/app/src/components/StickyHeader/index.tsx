@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext, AuthContextType } from '../../context/AuthContext';
 import Logo from '../Logo';
+import { Link } from 'react-router-dom';
 
 const StickyHeader = () => {
     const { state, dispatch } = useContext<AuthContextType>(AuthContext);
@@ -31,6 +32,7 @@ const StickyHeader = () => {
                         {/* <button onClick={toggleDropdown} className="bg-blue-500 text-white px-4 py-2 rounded">Menu</button> */}
                         {dropdownOpen && (
                             <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg">
+                                <Link to="/profile" className='block text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full mb-1'>Profile</Link> {/* Profile link */}
                                 <button onClick={handleLogout} className="block text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full">Logout</button>
                             </div>
                         )}

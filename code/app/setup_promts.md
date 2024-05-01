@@ -187,5 +187,45 @@ or maybe transform
 please make Button Exit Edit Mode smaller
 
 
+### Setup project. Chat 8. add profile page and tests
 
+[source.zip]
+analyze code and add profile page
+
+show ProfilePage code and add Route to App.tsx
+
+ProfilePage should use same logic as LoginForm
+
+yes update
+
+please add TS
+
+add Confirm Password filed and validation use AuthContext to populate email
+
+add profile link to Header component above logout button
+
+add profile link to StickyHeader component above logout button
+
+
+### Setup project. Chat 9. profile link to StickyHeader and 404 page
+
+[source.zip]
+Add /profile link to StickyHeader component above logout button
+
+Add Jest tests to ProfilePage
+
+Add test to validate form
+
+Mock AuthContext for tests "allows submission with valid data" and "shows error messages for invalid data"
+
+Use const saveChangesButton = getByText('Save Changes')
+
+Add text "profile updated successfully" for ProfilePage after onSubmit
+
+Add info alert styles for Profile updated successfully block use tailwind.css
+
+Add 404 not found page and add routes use tailwind.css and current code source
+
+ERROR in src/App.tsx:35:18 TS2322: Type '{ component: () => Element; }' is not assignable to type 'IntrinsicAttributes & RouteProps'. Property 'component' does not exist on type 'IntrinsicAttributes & RouteProps'. Did you mean 'Component'?
+Add link to sing-in page for NotFoundPage
 
