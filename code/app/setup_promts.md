@@ -62,7 +62,7 @@ add space for Dashboard - Top JavaScript Frameworks
  in Dashboard
 please replace Remove to delete icon
 
-replace text Remove in line <button data-testid={`delete-framework-${index + 1}`} type="button" onClick={() => remove(index)} className="ml-2 text-red-500">Remove</button>
+replace text Remove in line ```<button data-testid={`delete-framework-${index + 1}`} type="button" onClick={() => remove(index)}``` className="ml-2 text-red-500">Remove</button>
 
 withe remove emoji icon and add Tooltip with text "Remove".
 For tooltip use only tailwind.css 
@@ -73,8 +73,7 @@ please move Tooltip to separate component
 
 could you center tooltip content horizontally
 
-it's seems <div className="relative flex items-center"> hasn't class tooltip
-and please use inline block
+it's seems `<div className="relative flex items-center">` hasn't class tooltip and please use inline block
 
 add animation for tooltip on hover
 
@@ -86,7 +85,7 @@ add auth guard for dashboard page
 
 add TypeScript to AuthGuard
 
-Argument of type 'Context<AuthContextType>' is not assignable to parameter of type 'Context<AuthState>'.
+```Argument of type 'Context<AuthContextType>' is not assignable to parameter of type 'Context<AuthState>'.```
 
 add fixed header component with email from AuthContext
 and LogoutButton
@@ -136,8 +135,7 @@ Please reduce font size for GitHub Stars, Pros and Cons
 
 Please check Dashboard/index.tsx
 in code should be field instead of framework
-and `<Tooltip text="Remove"> should wrap <button
-onClick={() => remove(framework.id)}`
+and `<Tooltip text="Remove"> should wrap <button onClick={() => remove(framework.id)}`
 
 
 ### Setup project. Chat 7. Edit Pros, Cons, Github Stars Dashboard/Styling
@@ -226,6 +224,6 @@ Add info alert styles for Profile updated successfully block use tailwind.css
 
 Add 404 not found page and add routes use tailwind.css and current code source
 
-ERROR in src/App.tsx:35:18 TS2322: Type '{ component: () => Element; }' is not assignable to type 'IntrinsicAttributes & RouteProps'. Property 'component' does not exist on type 'IntrinsicAttributes & RouteProps'. Did you mean 'Component'?
+```ERROR in src/App.tsx:35:18 TS2322: Type '{ component: () => Element; }' is not assignable to type 'IntrinsicAttributes & RouteProps'. Property 'component' does not exist on type 'IntrinsicAttributes & RouteProps'. Did you mean 'Component'?```
 Add link to sing-in page for NotFoundPage
 
