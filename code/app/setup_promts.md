@@ -227,3 +227,31 @@ Add 404 not found page and add routes use tailwind.css and current code source
 ```ERROR in src/App.tsx:35:18 TS2322: Type '{ component: () => Element; }' is not assignable to type 'IntrinsicAttributes & RouteProps'. Property 'component' does not exist on type 'IntrinsicAttributes & RouteProps'. Did you mean 'Component'?```
 Add link to sing-in page for NotFoundPage
 
+Add also link to dashboard on the StickyHeader the similar as /profile.
+
+Add also nav near logo with only one link to dashboard.
+
+Add more spaces between logo and nav.
+
+
+### Setup project. Chat 10. Create logo
+
+Create logo for AI UISprint use modern style
+
+Use more flat style
+
+Put elements together AI UI.
+
+Design a logo for 'AI UI' insquare microprocessor shape depicted with simplistic and clean lines. White background. On the left side, include a flat style icon of a microprocessor, Below put text with simple, modern typography 'Sprint'. Use a color palette of blue and grey for the elements.
+
+Change position of microprocessor icon to middle of screen add below text: 'AI Sprint'.
+
+Add text UI inside microprocessor.
+
+Please add below text 'AI Sprint'.
+
+AI Sprint
+
+Add text o selection below text 'AI Sprint'.
+
+Please add text 'AI Sprint' instead of selecton.

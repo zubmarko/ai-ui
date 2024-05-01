@@ -127,16 +127,16 @@ const Dashboard = () => {
           </div>
 
           <div>
-            <button data-testid="toggle-edit" type="button" onClick={toggleEditMode} className="text-xs mr-4 p-2 bg-blue-400 text-white rounded">
+            <button data-testid="toggle-edit" type="button" onClick={toggleEditMode} className="text-sm mr-4 p-2 bg-blue-400 text-white rounded">
               {editMode ? 'Exit Edit Mode' : 'Enter Edit Mode'}
             </button>
             {editMode && (
               <>
                 <button data-testid="add-framework-button" type="button" onClick={() => append({ id: uuidv4(), name: '', type: 'Library', githubStars: 0, pros: '', cons: '', logoUrl: 'https://via.placeholder.com/100x80.png/ffffff?text=NewFramework' })}
-                  className="text-xs mr-4 p-2 bg-green-500 text-white rounded">
+                  className="text-sm mr-4 p-2 bg-green-500 text-white rounded">
                   Add Framework
                 </button>
-                <button type="submit" className="text-xs p-2 bg-blue-500 text-white rounded ">Save Changes</button>
+                <button type="submit" className="text-sm p-2 bg-blue-500 text-white rounded ">Save Changes</button>
               </>
             )}
           </div>
@@ -160,14 +160,14 @@ const Dashboard = () => {
                         data-testid={`frameworks.${fieldIndex}.name`}
                         {...register(`frameworks.${fieldIndex}.name`)} defaultValue={field.name} className="text-xl font-semibold  w-full " />
                       {errors.frameworks && errors.frameworks[fieldIndex] && (
-                        <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].name?.message}</p>
+                        <p className="text-red-500 text-sm">{errors.frameworks[fieldIndex].name?.message}</p>
                       )}
                       <div>
                         <input
                           data-testid={`frameworks.${fieldIndex}.type`}
                           {...register(`frameworks.${fieldIndex}.type`)} defaultValue={field.type} className=" w-full " />
                         {errors.frameworks && errors.frameworks[fieldIndex] && (
-                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].type?.message}</p>
+                          <p className="text-red-500 text-sm">{errors.frameworks[fieldIndex].type?.message}</p>
                         )}
 
                       </div>
@@ -185,7 +185,7 @@ const Dashboard = () => {
                           data-testid={`frameworks.${fieldIndex}.githubStars`}
                           type="number" {...register(`frameworks.${fieldIndex}.githubStars`)} defaultValue={field.githubStars} className=" w-full " />
                         {errors.frameworks && errors.frameworks[fieldIndex] && (
-                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].githubStars?.message}</p>
+                          <p className="text-red-500 text-sm">{errors.frameworks[fieldIndex].githubStars?.message}</p>
                         )}
 
                       </div>
@@ -193,14 +193,14 @@ const Dashboard = () => {
                       <div className="text-sm text-gray-600 mb-2">Pros: <div className="font-medium">
                         <textarea {...register(`frameworks.${fieldIndex}.pros`)} defaultValue={field.pros} className="resize-none w-full " />
                         {errors.frameworks && errors.frameworks[fieldIndex] && (
-                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].pros?.message}</p>
+                          <p className="text-red-500 text-sm">{errors.frameworks[fieldIndex].pros?.message}</p>
                         )}
                       </div>
                       </div>
                       <div className="text-sm text-gray-600 mb-2">Cons: <div className="font-medium">
                         <textarea {...register(`frameworks.${fieldIndex}.cons`)} defaultValue={field.cons} className="resize-none w-full " />
                         {errors.frameworks && errors.frameworks[fieldIndex] && (
-                          <p className="text-red-500 text-xs">{errors.frameworks[fieldIndex].cons?.message}</p>
+                          <p className="text-red-500 text-sm">{errors.frameworks[fieldIndex].cons?.message}</p>
                         )}
                       </div>
                       </div>
